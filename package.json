@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-finnjanssensehb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHB-MCT/portfolio-FinnJanssensEHB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EHB-MCT/portfolio-FinnJanssensEHB/issues"
+  },
+  "homepage": "https://github.com/EHB-MCT/portfolio-FinnJanssensEHB#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.10",
+    "typescript": "^4.9.3"
+  }
+}
