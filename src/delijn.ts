@@ -5,7 +5,25 @@ dotenv.config();
 type City = {
   cityNumber: number;
   description: string;
+  entity?: number;
 };
+
+export async function getAllCities(): Promise<City[]> {
+  let data = await axios({
+    url: `https://api.delijn.be/DLKernOpenData/v1/beta/gemeenten`,
+    method: "get",
+    headers: {
+      "Ocp-Apim-Subscription-Key": process.env.DELIJN_API_KEY,
+    },
+  });
+  let cities: City[] = data.data.gemeenten.map((city: any): City => {
+    return {
+      cityNumber: city.gemeentenummer,
+      description: String(city.omschrijving).toLowerCase(),
+    };
+  });
+  return cities;
+}
 
 export async function getCitiesForEntity(
   entityNumber: number

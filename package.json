@@ -8,9 +8,7 @@
     "build": "tsc --project ./tsconfig.json",
     "test": "jest -c ./jest.unit.json",
     "test:coverage": "jest --coverage -c ./jest.unit.json",
-    "debug": "nodemon -e js,ts --watch src --exec \"npm run build:ts && npm run start:app\"",
-    "build:ts": "tsc",
-    "start:app": "node dist/index"
+    "db:seed": "ts-node ./src/db/seed.ts"
   },
   "repository": {
     "type": "git",
