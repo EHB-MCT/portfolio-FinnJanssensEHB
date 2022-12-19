@@ -20,7 +20,7 @@ export async function getCitiesForEntity(
   let cities: City[] = data.data.gemeenten.map((city: any): City => {
     return {
       cityNumber: city.gemeentenummer,
-      description: city.omschrijving,
+      description: String(city.omschrijving).toLowerCase(),
     };
   });
   return cities;
@@ -34,7 +34,7 @@ export async function getStopsForCity(cityNumber: number) {
       "Ocp-Apim-Subscription-Key": process.env.DELIJN_API_KEY,
     },
   });
-  let stopNumbers: number[] = data.data.haltes.map((stop) => {
+  let stopNumbers: number[] = data.data.haltes.map((stop: any) => {
     return Number(stop.haltenummer);
   });
   return stopNumbers;
@@ -52,6 +52,6 @@ export async function getBussesForStop(
     },
   });
   if (data.data.halteDoorkomsten[0]?.doorkomsten != undefined) {
-    data.data.halteDoorkomsten[0].doorkomsten?.map((stop) => {});
+    data.data.halteDoorkomsten[0].doorkomsten?.map((stop: any) => {});
   }
 }

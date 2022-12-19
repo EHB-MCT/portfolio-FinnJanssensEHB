@@ -1,10 +1,15 @@
 {
+  "include": ["src/**/*"],
+  "exclude": ["**/*.spec.ts"],
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ES2020",
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "strict": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true
   },
-  "include": ["src/**/*"]
+  "types": ["node", "jest"]
 }

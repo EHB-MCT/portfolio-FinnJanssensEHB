@@ -4,7 +4,7 @@ import {
   getCitiesForEntity,
   getBussesForStop,
   getStopsForCity,
-} from "./delijn.js";
+} from "./delijn";
 
 const app = express();
 app.get("/cities", async function (req, res) {
@@ -20,7 +20,7 @@ app.get("/cities", async function (req, res) {
   }
 });
 
-app.listen(3000);
+app.listen(3001);
 
 // let TOTAL_DELAY: number = 0;
 
