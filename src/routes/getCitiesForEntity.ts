@@ -6,10 +6,16 @@ export default async function getCitiesForEntity(
   request: Request,
   response: Response
 ) {
-  console.log("Entity: ", request.query.entity);
-  const entity = Number(request.query.entity);
+  let cities: any[] = [];
 
-  const cities: any[] = await getCities(entity);
+  if (Number(request.query.entity)) {
+    console.log("Entity: ", request.query.entity);
+    const entity = Number(request.query.entity);
+
+    cities = await getCities(entity);
+  } else {
+    cities = await getCities();
+  }
 
   response.statusCode = 200;
   response.send(cities);

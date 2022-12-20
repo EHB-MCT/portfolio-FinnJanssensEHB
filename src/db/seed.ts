@@ -15,7 +15,7 @@ async function seedCities() {
     cities.forEach((city) => {
       city.entity = i;
     });
-    const result = await citiesCollection.insertMany(cities, { ordered: true });
+    const result = await citiesCollection.insertMany(cities);
     await sleep(5000);
   }
 
