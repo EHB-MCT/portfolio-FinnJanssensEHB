@@ -13,6 +13,7 @@ async function seedCities() {
     console.log("Getting cities for entity: ", i);
 
     let cities = await getCitiesForEntity(i);
+
     cities.forEach((city) => {
       city.entity = i;
     });
