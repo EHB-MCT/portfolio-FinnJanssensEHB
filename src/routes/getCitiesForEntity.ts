@@ -8,7 +8,7 @@ export default async function getCitiesForEntity(
 ) {
   let cities: any[] = [];
 
-  if (Number(request.query.entity)) {
+  if (Number(request.query.entity) > 0 && Number(request.query.entity) < 6) {
     console.log("Entity: ", request.query.entity);
     const entity = Number(request.query.entity);
 

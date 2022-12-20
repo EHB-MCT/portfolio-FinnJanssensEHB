@@ -54,7 +54,7 @@ describe("Get Cities For Entity", () => {
     expect(mockResponse.statusCode).toBe(expectedStatusCode);
   });
   test("412 - cities (entity number is not in range 1-5)", async () => {
-    const expectedStatusCode = 404;
+    const expectedStatusCode = 412;
     mockRequest.query = {
       entity: "6",
     };
