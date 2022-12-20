@@ -13,10 +13,11 @@ export default async function getCitiesForEntity(
     const entity = Number(request.query.entity);
 
     cities = await getCities(entity);
-  } else {
-    cities = await getCities();
-  }
 
-  response.statusCode = 200;
-  response.send(cities);
+    response.statusCode = 200;
+    response.send(cities);
+  } else {
+    response.statusCode = 412;
+    response.send("Error: invalid entity");
+  }
 }

@@ -33,15 +33,24 @@ describe("Get Cities For Entity", () => {
     expect(responseObject).toEqual(expectedResponse);
   });
 
-  test("200 - cities (no entity specified)", async () => {
-    const expectedStatusCode = 200;
-    const expectedResponse = await getCities();
+  test("412 - cities (no entity specified)", async () => {
+    const expectedStatusCode = 412;
+    mockRequest.query = {
+      entity: "",
+    };
 
     await getCitiesForEntity(mockRequest as Request, mockResponse as Response);
 
-    // console.log(mockResponse.statusCode);
+    expect(mockResponse.statusCode).toBe(expectedStatusCode);
+  });
+  test("412 - cities (wrong entity specified)", async () => {
+    const expectedStatusCode = 412;
+    mockRequest.query = {
+      entity: "a",
+    };
+
+    await getCitiesForEntity(mockRequest as Request, mockResponse as Response);
 
     expect(mockResponse.statusCode).toBe(expectedStatusCode);
-    expect(responseObject).toEqual(expectedResponse);
   });
 });
