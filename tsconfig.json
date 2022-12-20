@@ -1,6 +1,6 @@
 {
   "include": ["src/**/*"],
-  "exclude": ["**/*.spec.ts"],
+  // "exclude": ["**/*.spec.ts"],
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
@@ -9,7 +9,7 @@
     "outDir": "dist",
     "strict": true,
     "noImplicitAny": true,
-    "esModuleInterop": true
-  },
-  "types": ["node", "jest"]
+    "esModuleInterop": true,
+    "types": ["node", "jest", "ts-jest"]
+  }
 }

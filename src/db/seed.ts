@@ -3,8 +3,6 @@ import { getCitiesForEntity } from "../delijn";
 
 const citiesCollection = client.db("Cluster0").collection("Cities");
 
-const options = { ordered: true };
-
 async function seedCities() {
   const result = await citiesCollection.deleteMany({});
   console.log(result);
