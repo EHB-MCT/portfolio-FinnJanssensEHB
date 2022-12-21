@@ -25,8 +25,6 @@ export async function dbGetCitiesForEntity(entity?: number) {
   return cities;
 }
 export async function dbGetStopsForCity(cityDescription: string) {
-  console.log("dbGetStopsForCity");
-
   const stops: any[] = [];
   try {
     console.log("Connecting to client...");
@@ -38,7 +36,6 @@ export async function dbGetStopsForCity(cityDescription: string) {
       .db("Cluster0")
       .collection("Stops")
       .find(filter, { sort: { description: 1 } });
-    console.log(cursor);
 
     await cursor.forEach((stop: any) => {
       stops.push(stop);

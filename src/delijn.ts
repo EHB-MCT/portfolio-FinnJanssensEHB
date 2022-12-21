@@ -3,6 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 import { Stop, City } from "./types";
+import { calculateDelay } from "./utility";
 
 export async function getAllCities(): Promise<City[]> {
   let data = await axios({
@@ -90,4 +91,27 @@ export async function getAllStops() {
     };
   });
   return allStops;
+}
+
+export async function getDelayForStop(entity: number, stopNumber: number) {
+  let delay: number = 0;
+  let response = await axios({
+    url: `https://api.delijn.be/DLKernOpenData/v1/beta/haltes/${entity}/${stopNumber}/real-time`,
+    method: "get",
+    headers: {
+      "Ocp-Apim-Subscription-Key": process.env.DELIJN_API_KEY,
+    },
+  });
+  if (response.data.halteDoorkomsten[0]?.doorkomsten) {
+    // console.log(response.data.halteDoorkomsten[0]?.doorkomsten);
+    response.data.halteDoorkomsten[0]?.doorkomsten.forEach((bus: any) => {
+      if (bus["dienstregelingTijdstip"] && bus["real-timeTijdstip"]) {
+        delay += calculateDelay(
+          new Date(bus["dienstregelingTijdstip"]),
+          new Date(bus["real-timeTijdstip"])
+        );
+      }
+    });
+  }
+  return delay;
 }

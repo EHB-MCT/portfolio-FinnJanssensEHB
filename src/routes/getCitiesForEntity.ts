@@ -18,6 +18,6 @@ export default async function getCitiesForEntity(
     response.send(cities);
   } else {
     response.statusCode = 412;
-    response.send("Error: invalid entity");
+    response.send("Error 412: invalid entity");
   }
 }

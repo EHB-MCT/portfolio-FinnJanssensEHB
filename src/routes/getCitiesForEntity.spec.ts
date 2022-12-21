@@ -1,5 +1,5 @@
 import { Response, Request } from "express";
-import { getCities } from "../db/queryFunctions";
+import { dbGetCitiesForEntity } from "../db/queryFunctions";
 import getCitiesForEntity from "./getCitiesForEntity";
 
 describe("Get Cities For Entity", () => {
@@ -23,7 +23,7 @@ describe("Get Cities For Entity", () => {
 
   test("200 - cities (entity = 4)", async () => {
     const expectedStatusCode = 200;
-    const expectedResponse = await getCities(4);
+    const expectedResponse = await dbGetCitiesForEntity(4);
 
     await getCitiesForEntity(mockRequest as Request, mockResponse as Response);
 
