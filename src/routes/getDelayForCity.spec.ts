@@ -9,7 +9,7 @@ describe("Get Delay For City", () => {
   beforeEach(() => {
     mockRequest = {
       query: {
-        cityNumber: "1122",
+        city: "leuven",
       },
     };
     mockResponse = {
