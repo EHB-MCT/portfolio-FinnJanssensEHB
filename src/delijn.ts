@@ -84,9 +84,9 @@ export async function getAllStops() {
   let allStops: Stop[] = response.data.haltes.map((stop: any): Stop => {
     return {
       stopNumber: stop.haltenummer,
-      cityNumber: stop.gemeentenummer,
       description: stop.omschrijvingGemeente,
       entity: stop.entiteitnummer,
+      cityDescription: stop.omschrijvingGemeente.toLowerCase(),
     };
   });
   return allStops;

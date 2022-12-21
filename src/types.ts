@@ -7,6 +7,6 @@ export type City = {
 export type Stop = {
   stopNumber: number;
   description: string;
-  cityNumber: number;
   entity: number;
+  cityDescription: string;
 };
