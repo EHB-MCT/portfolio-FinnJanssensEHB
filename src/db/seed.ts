@@ -1,6 +1,9 @@
-import { client } from "./config";
+import { uri } from "./config";
 import { getAllStops, getCitiesForEntity } from "../delijn";
 import { Stop, City } from "../types";
+import { MongoClient } from "mongodb";
+
+const client = new MongoClient(uri);
 
 const citiesCollection = client.db("Cluster0").collection("Cities");
 const stopsCollection = client.db("Cluster0").collection("Stops");

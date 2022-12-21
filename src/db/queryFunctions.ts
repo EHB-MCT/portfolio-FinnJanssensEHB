@@ -1,14 +1,26 @@
+import { MongoClient } from "mongodb";
 import { Stop } from "../types";
-import { client } from "./config";
+import { uri } from "./config";
+
+const client = new MongoClient(uri, {
+  minPoolSize: 30,
+});
+
+async function MongoConnect() {
+  await client.connect();
+}
+async function MongoClose() {
+  await client.close();
+}
 
 export async function dbGetCitiesForEntity(entity?: number) {
   const cities: any[] = [];
   try {
+    await MongoConnect();
     console.log("Connecting to client...");
 
     const filter = entity ? { entity: entity } : {};
 
-    await client.connect();
     const cursor = client
       .db("Cluster0")
       .collection("Cities")
@@ -16,22 +28,24 @@ export async function dbGetCitiesForEntity(entity?: number) {
     await cursor.forEach((city: any) => {
       cities.push(city);
     });
+    console.log("Done iterating");
   } finally {
     console.log("Closing client...");
 
-    await client.close();
+    await MongoClose();
   }
 
   return cities;
 }
+
 export async function dbGetStopsForCity(cityDescription: string) {
   const stops: any[] = [];
   try {
+    await MongoConnect();
     console.log("Connecting to client...");
 
     const filter = { cityDescription: cityDescription };
 
-    await client.connect();
     const cursor = client
       .db("Cluster0")
       .collection("Stops")
@@ -40,10 +54,11 @@ export async function dbGetStopsForCity(cityDescription: string) {
     await cursor.forEach((stop: any) => {
       stops.push(stop);
     });
+    console.log("Done iterating");
   } finally {
     console.log("Closing client...");
 
-    await client.close();
+    await MongoClose();
   }
 
   return stops;

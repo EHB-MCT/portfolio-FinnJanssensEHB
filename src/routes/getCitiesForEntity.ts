@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { client } from "../db/config";
 import { dbGetCitiesForEntity } from "../db/queryFunctions";
 
 export default async function getCitiesForEntity(
