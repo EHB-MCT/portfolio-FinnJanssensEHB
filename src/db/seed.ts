@@ -1,7 +1,9 @@
 import { client } from "./config";
-import { getCitiesForEntity } from "../delijn";
+import { getAllStops, getCitiesForEntity } from "../delijn";
+import { Stop, City } from "../types";
 
 const citiesCollection = client.db("Cluster0").collection("Cities");
+const stopsCollection = client.db("Cluster0").collection("Stops");
 
 async function seedCities() {
   const result = await citiesCollection.deleteMany({});
@@ -16,13 +18,29 @@ async function seedCities() {
       city.entity = i;
     });
     const result = await citiesCollection.insertMany(cities);
-    await sleep(5000);
+    await sleep(6000);
   }
 
-  client.close();
   console.log("Succesfully seeded cities");
 }
 
-seedCities();
+async function seedStops() {
+  const result = await stopsCollection.deleteMany({});
+  console.log(result);
+  console.log("Getting all stops... This might take a while.");
+
+  let allStops: Stop[] = await getAllStops();
+
+  await stopsCollection.insertMany(allStops);
+}
+
+async function seed() {
+  await client.connect();
+  // await seedCities();
+  await seedStops();
+  await client.close();
+}
+
+seed();
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

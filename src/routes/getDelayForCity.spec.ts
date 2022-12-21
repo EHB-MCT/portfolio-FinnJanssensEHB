@@ -20,8 +20,20 @@ describe("Get Delay For City", () => {
     };
   });
 
-  test("200 - cities (entity = 4)", async () => {
+  test("200 - delay (cityNumber = 1122)", async () => {
     const expectedStatusCode = 200;
+    const expectedResponse = {};
+
+    await getDelayForCity(mockRequest as Request, mockResponse as Response);
+
+    console.log(mockResponse.statusCode);
+
+    expect(mockResponse.statusCode).toBe(expectedStatusCode);
+    expect(responseObject).toEqual(expectedResponse);
+  });
+
+  test("412 - delay (cityNumber not specified)", async () => {
+    const expectedStatusCode = 412;
     const expectedResponse = {};
 
     await getDelayForCity(mockRequest as Request, mockResponse as Response);

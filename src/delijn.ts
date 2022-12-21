@@ -2,11 +2,7 @@ import axios from "axios";
 import * as dotenv from "dotenv";
 dotenv.config();
 
-type City = {
-  cityNumber: number;
-  description: string;
-  entity?: number;
-};
+import { Stop, City } from "./types";
 
 export async function getAllCities(): Promise<City[]> {
   let data = await axios({
@@ -72,4 +68,26 @@ export async function getBussesForStop(
   if (data.data.halteDoorkomsten[0]?.doorkomsten != undefined) {
     data.data.halteDoorkomsten[0].doorkomsten?.map((stop: any) => {});
   }
+}
+
+export async function getAllStops() {
+  let response = await axios({
+    url: "https://api.delijn.be/DLKernOpenData/v1/beta/haltes",
+    method: "get",
+    headers: {
+      "Ocp-Apim-Subscription-Key": process.env.DELIJN_API_KEY,
+    },
+  });
+  if (response.status == 429) {
+    console.log("RESPONSE: ", response);
+  }
+  let allStops: Stop[] = response.data.haltes.map((stop: any): Stop => {
+    return {
+      stopNumber: stop.haltenummer,
+      cityNumber: stop.gemeentenummer,
+      description: stop.omschrijvingGemeente,
+      entity: stop.entiteitnummer,
+    };
+  });
+  return allStops;
 }
