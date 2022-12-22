@@ -6,7 +6,7 @@ export default function CityForm({ handleClick, isLoading }) {
   const [entity, setEntity] = useState(1);
 
   useEffect(() => {
-    fetch(`http://localhost:3030/cities?entity=${entity}`)
+    fetch(`http://localhost:5000/cities?entity=${entity}`)
       .then((response) => {
         return response.json();
       })

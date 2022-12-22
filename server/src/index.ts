@@ -5,9 +5,13 @@ import getDelayForCity from "./routes/getDelayForCity";
 
 const app = express();
 const server = new http.Server(app);
-server.listen(3030);
+server.listen(5000);
 
 console.log("APP UP AND RUNNING!");
 
+app.get("/", (req, res) => {
+  res.statusCode = 200;
+  res.send("Server is up and running");
+});
 app.get("/cities", getCitiesForEntity);
 app.get("/delay", getDelayForCity);

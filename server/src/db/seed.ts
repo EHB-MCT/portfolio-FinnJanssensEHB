@@ -40,7 +40,7 @@ async function seedStops() {
 
 async function seed() {
   await client.connect();
-  // await seedCities();
+  await seedCities();
   await seedStops();
   await client.close();
 }

@@ -17,7 +17,7 @@ function App() {
           console.log(city);
           setLoading(true);
           const response = await fetch(
-            `http://localhost:3030/delay?city=${city}`
+            `http://localhost:5000/delay?city=${city}`
           );
           const data = await response.json();
           console.log(data);
