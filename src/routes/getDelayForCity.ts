@@ -4,7 +4,7 @@ import { uri } from "../db/config";
 import { dbGetStopsForCity } from "../db/queryFunctions";
 import { getDelayForStop } from "../delijn";
 import { Stop } from "../types";
-import { convertMsToTime } from "../utility";
+import { convertMsToTime, sleep } from "../utility";
 
 export default async function getDelayForCity(
   request: Request,
@@ -21,7 +21,14 @@ export default async function getDelayForCity(
       response.send("Error 412: invalid city");
     } else {
       for (const stop of stops) {
-        delay += await getDelayForStop(stop.entity, stop.stopNumber);
+        let delayForStop: number =
+          Number(await getDelayForStop(stop.entity, stop.stopNumber)) || 0;
+        console.log(`Delay for stop #${stop.stopNumber} :`, delayForStop);
+
+        delay += delayForStop;
+        console.log("Total delay: ", delay);
+
+        await sleep(1000);
       }
       console.log("Done getting delay for stops");
       console.log(convertMsToTime(delay));

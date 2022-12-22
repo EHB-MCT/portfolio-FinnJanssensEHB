@@ -2,6 +2,7 @@ import { uri } from "./config";
 import { getAllStops, getCitiesForEntity } from "../delijn";
 import { Stop, City } from "../types";
 import { MongoClient } from "mongodb";
+import { sleep } from "../utility";
 
 const client = new MongoClient(uri);
 
@@ -45,5 +46,3 @@ async function seed() {
 }
 
 seed();
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

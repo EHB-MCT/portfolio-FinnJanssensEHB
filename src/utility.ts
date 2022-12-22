@@ -19,3 +19,5 @@ export function convertMsToTime(milliseconds: number) {
     seconds
   )}`;
 }
+
+export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));

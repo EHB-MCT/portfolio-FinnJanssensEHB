@@ -2,9 +2,7 @@ import { MongoClient } from "mongodb";
 import { Stop } from "../types";
 import { uri } from "./config";
 
-const client = new MongoClient(uri, {
-  minPoolSize: 30,
-});
+const client = new MongoClient(uri);
 
 async function MongoConnect() {
   await client.connect();
