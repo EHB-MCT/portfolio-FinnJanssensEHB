@@ -33,10 +33,10 @@ git clone https://github.com/EHB-MCT/portfolio-FinnJanssensEHB.git
 cd portfolio-FinnJanssensEHB/
 ```
 
-3. Make a .env file and add your "De Lijn" API-key (obtain one via [data.delijn.be](https://data.delijn.be/))
+3. Make the .env file for the server and add your "De Lijn" API-key (obtain one via [data.delijn.be](https://data.delijn.be/))
 
 ```bash
-touch .env && echo "DELIJN_API_KEY=\"<YOUR_KEY_HERE>\"" > .env
+touch server/.env && echo "DELIJN_API_KEY=\"<YOUR_KEY_HERE>\"" > .env
 ```
 
 4. Build the Docker image (might have to run with admin rights)
