@@ -15,7 +15,7 @@ Make sure you have the following installed:
 - Git
 - [NodeJS v18 or up](https://nodejs.org/en/)
 - Make
-  - Installed by default on Linux
+  - Installed by default on most Linux distro's or can be installed by running: `sudo apt install make`
   - Install on windows using [chocolatey](https://chocolatey.org/install): `choco install make`
 - [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
 
@@ -39,13 +39,13 @@ cd portfolio-FinnJanssensEHB/
 touch .env && echo "DELIJN_API_KEY=\"<YOUR_KEY_HERE>\"" > .env
 ```
 
-4. Build the Docker image
+4. Build the Docker image (might have to run with admin rights)
 
 ```bash
 make build
 ```
 
-5. Spin up the docker containers
+5. Spin up the docker containers (might have to run with admin rights)
 
 ```bash
 make run
