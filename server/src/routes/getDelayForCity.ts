@@ -21,8 +21,10 @@ export default async function getDelayForCity(
       response.send("Error 412: invalid city");
     } else {
       for (const stop of stops) {
-        let delayForStop: number =
-          Number(await getDelayForStop(stop.entity, stop.stopNumber)) || 0;
+        let delayForStop: number = await getDelayForStop(
+          stop.entity,
+          stop.stopNumber
+        );
         console.log(`Delay for stop #${stop.stopNumber} :`, delayForStop);
 
         delay += delayForStop;
