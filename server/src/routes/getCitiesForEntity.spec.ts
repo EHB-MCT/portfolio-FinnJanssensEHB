@@ -1,3 +1,5 @@
+/**Tests for getCitiesForEntity Route */
+
 import { Response, Request } from "express";
 import { dbGetCitiesForEntity } from "../db/queryFunctions";
 import getCitiesForEntity from "./getCitiesForEntity";

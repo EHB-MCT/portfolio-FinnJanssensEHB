@@ -1,7 +1,10 @@
+/**This file contains utility functions */
+
 export function calculateDelay(plannedTime: Date, realTime: Date) {
   return Math.abs(realTime.getTime() - plannedTime.getTime());
 }
 
+//source: https://bobbyhadz.com/blog/javascript-convert-milliseconds-to-hours-minutes-seconds
 function padTo2Digits(num: number) {
   return num.toString().padStart(2, "0");
 }

@@ -1,3 +1,5 @@
+/**Tests for getDelayForCity Route */
+
 import { Response, Request } from "express";
 import getDelayForCity from "./getDelayForCity";
 
@@ -34,13 +36,11 @@ describe("Get Delay For City", () => {
 
   test("412 - delay (cityNumber not specified)", async () => {
     const expectedStatusCode = 412;
-    const expectedResponse = {};
 
     await getDelayForCity(mockRequest as Request, mockResponse as Response);
 
     console.log(mockResponse.statusCode);
 
     expect(mockResponse.statusCode).toBe(expectedStatusCode);
-    expect(responseObject).toEqual(expectedResponse);
   });
 });

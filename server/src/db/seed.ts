@@ -1,6 +1,9 @@
+/**This file is run when "npm run db:seed" is called.
+ * This seeds the database with all cities and busstops */
+
 import { uri } from "./config";
 import { getAllStops, getCitiesForEntity } from "../delijn";
-import { Stop, City } from "../types";
+import { Stop } from "../types";
 import { MongoClient } from "mongodb";
 import { sleep } from "../utility";
 

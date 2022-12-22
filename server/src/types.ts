@@ -1,3 +1,4 @@
+/**Types */
 export type City = {
   cityNumber: number;
   description: string;

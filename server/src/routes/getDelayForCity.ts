@@ -1,6 +1,4 @@
 import { Request, Response } from "express";
-import { MongoClient } from "mongodb";
-import { uri } from "../db/config";
 import { dbGetStopsForCity } from "../db/queryFunctions";
 import { getDelayForStop } from "../delijn";
 import { Stop } from "../types";

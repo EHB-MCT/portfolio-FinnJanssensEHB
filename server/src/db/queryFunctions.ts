@@ -1,16 +1,21 @@
+/**This file contains all function that access the MongoDB database */
+
 import { MongoClient } from "mongodb";
-import { Stop } from "../types";
 import { uri } from "./config";
 
 const client = new MongoClient(uri);
 
+//Connect to Mongo Database
 async function MongoConnect() {
   await client.connect();
 }
+
+//Close connection to Mongo Database
 async function MongoClose() {
   await client.close();
 }
 
+//Get the cities for a desired entity (province, 1-5)
 export async function dbGetCitiesForEntity(entity?: number) {
   const cities: any[] = [];
   try {
@@ -36,6 +41,7 @@ export async function dbGetCitiesForEntity(entity?: number) {
   return cities;
 }
 
+//Get all the busstops for a certain city
 export async function dbGetStopsForCity(cityDescription: string) {
   const stops: any[] = [];
   try {

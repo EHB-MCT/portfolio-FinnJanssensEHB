@@ -51,6 +51,12 @@ make build
 make run
 ```
 
+## Sources
+
+- Convert MS to time string: https://bobbyhadz.com/blog/javascript-convert-milliseconds-to-hours-minutes-seconds
+- MERN-stack Docker Compose: https://github.com/sidpalas/devops-directive/tree/master/2020-08-31-docker-compose
+- Dockerizing a react app: https://jsramblings.com/dockerizing-a-react-app/
+
 ## Reporting issues
 
 Issues may be reported by creating an issue on Github. These issues will then be looked into. The help and involvement is very much appreciated.
